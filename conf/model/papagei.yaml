@@ -1,0 +1,10 @@
+name: "papagei"
+pretrained_model_path: "/home/amax/workspace/JTwBio/best_models/PaPaGei/papagei_s.pt" 
+in_channels: 1   # PPG is single-channel
+base_filters: 32
+kernel_size: 3
+stride: 2
+groups: 1
+n_block: 18
+n_classes: 512  # papagei embedding dimension
+n_experts: 3

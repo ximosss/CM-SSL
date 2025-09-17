@@ -1,0 +1,32 @@
+seed: 42
+
+data:
+  path: 
+  split_ratios: [0.9, 0.05, 0.05]
+  split_seed: 42
+  batch_size: 2048
+  fd_pertub_ratio: 0.1
+  num_workers: 32
+
+model:
+  in_channels: 1
+  base_filters: 48
+  kernel_size: 3
+  stride: 2
+  n_block: 16
+  hidden_dim: 512
+  projection_dim: 512
+
+training:
+  logs_dir: 
+  checkpoints_dir: 
+  epochs: 512
+  temperature: 0.1
+  loss:
+    alpha: 1.0
+  optimizer:
+    lr: 3e-4
+    weight_decay: 1e-4
+  early_stopping:
+    patience: 10
+

@@ -1,0 +1,8 @@
+name: heartlang
+pretrained_model_path: /home/amax/workspace/JTwBio/best_models/HeartLang/checkpoint-200.pth
+seq_len: 256
+time_window: 96
+depth: 12
+embed_dim: 768
+heads: 8
+mlp_dim: 1024

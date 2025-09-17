@@ -1,0 +1,38 @@
+seed: 42
+
+data:
+  path: 
+  batch_size: 2048
+  num_workers: 32
+  split_ratios: [0.9, 0.05, 0.05]
+  split_seed: 42 
+
+model:
+  in_channels: 1
+  seq_len: 1250      
+  vit:
+    patch_size: 125    
+    embed_dim: 384    
+    depth: 12        
+    num_heads: 6    
+    mlp_ratio: 4.0    # Ratio of mlp hidden dim to embedding dim
+  moco:
+    dim: 128
+    mlp_dim: 2048
+    T: 0.2
+    m_initial: 0.99
+    m_final: 1.0
+
+training:
+  epochs: 100
+  seed: 42
+  logs_dir: 
+  checkpoints_dir: 
+  warmup_epochs: 10
+  optimizer:
+    lr: 0.05
+    weight_decay: 0.1
+  early_stopping:
+    patience: 10
+
+

@@ -1,0 +1,41 @@
+defaults:
+  - _self_
+  - experiment: ???
+  - model: ???           
+
+data:
+  target_signal_length: 1250
+  split_ratios: [0.7, 0.15, 0.15] 
+  split_seed: 42 
+  batch_size: 256
+  num_workers: 4
+
+model:
+  in_channels: 1
+  base_filters: 48
+  kernel_size: 3
+  stride: 2
+  groups: 1
+  n_block: 16
+  hidden_dim: 512
+  projection_dim: 512
+
+training:
+  # "linear_probing" or "full_finetuning"
+  finetune_mode: "full_finetuning" 
+  epochs: 512
+  optimizer:
+    lr: 1e-3
+    backbone_lr: 1e-5 
+    weight_decay: 1e-4
+  scheduler:
+    type: "cosine" # "cosine" or "none"
+  early_stopping:
+    patience: 10
+
+results:
+  summary_file_path: "/home/amax/workspace/JTwBio/new_finetune_summary.csv"
+
+hydra:
+  run:
+    dir: outputs/new_run/${now:%Y-%m-%d_%H-%M-%S}/${model.name}/${experiment.name}

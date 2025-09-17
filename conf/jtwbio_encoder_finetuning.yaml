@@ -1,0 +1,38 @@
+defaults:
+  - experiment: ???
+  - model: ???
+  - _self_
+
+data:
+  target_signal_length: 1250
+  split_ratios: [0.8, 0.1, 0.1] 
+  split_seed: 42 
+  batch_size: 512
+  num_workers: 4
+  num_patches: 10    
+  patch_size: 125
+
+model:
+  in_channels: 1
+  pretrained_model_path: "/home/amax/workspace/JTwBio/checkpoints/jtwbio_encoder_full_weight_ppg_large/epoch=130-step=56330-valid_total_loss=0.0000.ckpt"
+
+training:
+  # "linear_probing" or "full_finetuning"
+  prediction_output_path: "test_predictions.npz"
+  finetune_mode: "full_finetuning" 
+  epochs: 1024
+  optimizer:
+    lr: 1e-4
+    backbone_lr: 1e-5
+    weight_decay: 1e-4
+  scheduler:
+    type: "cosine" # "cosine" or "none"
+  early_stopping:
+    patience: 5
+
+results:
+  summary_file_path: "/home/amax/workspace/JTwBio/new_finetune_summary.csv"
+
+hydra:
+  run:
+    dir: outputs/${model.name}/${experiment.name}/${now:%Y-%m-%d_%H-%M-%S}/

@@ -1,0 +1,2 @@
+name: byol
+pretrained_model_path: "/home/amax/workspace/JTwBio/best_models/BYOL/byol_pretraining_fulldata_ECG_1/best_model.pth"

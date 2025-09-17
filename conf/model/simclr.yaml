@@ -1,0 +1,2 @@
+name: simclr
+pretrained_model_path: "/home/amax/workspace/JTwBio/best_models/SimCLR/simclr_pretraining_fulldata_ECG_2/best_model.pth"

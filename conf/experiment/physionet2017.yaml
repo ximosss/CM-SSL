@@ -1,0 +1,31 @@
+
+name: "physionet2017" 
+type: "classification" 
+num_outputs: 4
+
+heartlang_data_paths: 
+  train_sentences: ./physionet2017/train_data.npy
+  train_in_chans: ./physionet2017/train_data_in_chans.npy
+  train_in_times: ./physionet2017/train_data_in_times.npy
+  train_labels: ./physionet2017/train_labels.npy
+
+  val_sentences: ./physionet2017/val_data.npy
+  val_in_chans: ./physionet2017/val_data_in_chans.npy
+  val_in_times: ./physionet2017/val_data_in_times.npy
+  val_labels: ./physionet2017/val_labels.npy
+
+  test_sentences: ./physionet2017/test_data.npy
+  test_in_chans: ./physionet2017/test_data_in_chans.npy
+  test_in_times: ./physionet2017/test_data_in_times.npy
+  test_labels: ./physionet2017/test_labels.npy
+
+data_paths:
+  train_features: ./physionet2017/train_features.npy
+  train_labels: ./physionet2017/train_labels.npy
+  val_features: ./physionet2017/val_features.npy
+  val_labels: ./physionet2017/val_labels.npy
+  test_features: ./physionet2017/test_features.npy
+  test_labels: ./physionet2017/test_labels.npy
+
+
+prediction_output_path: "test_predictions.npz"

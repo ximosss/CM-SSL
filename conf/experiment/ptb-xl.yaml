@@ -1,0 +1,31 @@
+
+name: "ptb-xl" 
+type: "multi-label classification" 
+num_outputs: 5
+
+heartlang_data_paths: 
+  train_sentences: ./ptb-xl/train_data.npy
+  train_in_chans: ./ptb-xl/train_data_in_chans.npy
+  train_in_times: ./ptb-xl/train_data_in_times.npy
+  train_labels: ./ptb-xl/train_labels.npy
+
+  val_sentences: ./ptb-xl/val_data.npy
+  val_in_chans: ./ptb-xl/val_data_in_chans.npy
+  val_in_times: ./ptb-xl/val_data_in_times.npy
+  val_labels: ./ptb-xl/val_labels.npy
+
+  test_sentences: ./ptb-xl/test_data.npy
+  test_in_chans: ./ptb-xl/test_data_in_chans.npy
+  test_in_times: ./ptb-xl/test_data_in_times.npy
+  test_labels: ./ptb-xl/test_labels.npy
+
+data_paths:
+  train_features: ./ptb-xl/train_features.npy
+  train_labels: ./ptb-xl/train_labels.npy
+  val_features: ./ptb-xl/val_features.npy
+  val_labels: ./ptb-xl/val_labels.npy
+  test_features: ./ptb-xl/test_features.npy
+  test_labels: ./ptb-xl/test_labels.npy
+
+
+prediction_output_path: "test_predictions.npz"

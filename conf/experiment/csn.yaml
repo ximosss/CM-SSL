@@ -1,0 +1,30 @@
+
+name: "csn" 
+type: "multi-label classification" 
+num_outputs: 94
+
+heartlang_data_paths: 
+  train_sentences: ./csn/train_data.npy
+  train_in_chans: ./csn/train_data_in_chans.npy
+  train_in_times: ./csn/train_data_in_times.npy
+  train_labels: ./csn/train_labels.npy
+
+  val_sentences: ./csn/val_data.npy
+  val_in_chans: ./csn/val_data_in_chans.npy
+  val_in_times: ./csn/val_data_in_times.npy
+  val_labels: ./csn/val_labels.npy
+
+  test_sentences: ./csn/test_data.npy
+  test_in_chans: ./csn/test_data_in_chans.npy
+  test_in_times: ./csn/test_data_in_times.npy
+  test_labels: ./csn/test_labels.npy
+
+data_paths:
+  train_features: ./csn/train_features.npy
+  train_labels: ./csn/train_labels.npy
+  val_features: ./csn/val_features.npy
+  val_labels: ./csn/val_labels.npy
+  test_features: ./csn/test_features.npy
+  test_labels: ./csn/test_labels.npy
+
+prediction_output_path: "test_predictions.npz"

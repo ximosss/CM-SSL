@@ -1,0 +1,16 @@
+in_channels: 1
+seq_len: 1250      
+vit:
+  patch_size: 125    
+  embed_dim: 320    
+  depth: 10        
+  num_heads: 5    
+  mlp_ratio: 4.0    # Ratio of mlp hidden dim to embedding dim
+moco:
+  dim: 128
+  mlp_dim: 2048
+  T: 0.2
+  m_initial: 0.99
+  m_final: 1.0
+name: mocov3
+pretrained_model_path: "/home/amax/workspace/JTwBio/best_models/Mocov3/mocov3_pretraining_fulldata_ECG_1/best_model.pth"

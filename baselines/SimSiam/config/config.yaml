@@ -1,0 +1,30 @@
+seed: 42
+
+data:
+  path: 
+  split_ratios: [0.9, 0.05, 0.05] # [train, val, test]
+  split_seed: 42
+  batch_size: 512
+  num_workers: 16
+
+model:
+  in_channels: 1
+  base_filters: 64
+  kernel_size: 3
+  stride: 2
+  n_block: 16
+  hidden_dim: 2048 # SimSiam paper default
+  projection_dim: 512
+
+training:
+  logs_dir: 
+  checkpoints_dir: 
+  epochs: 512
+  warmup_epochs: 10  
+  optimizer:
+    lr: 3e-4
+    weight_decay: 5e-5
+  early_stopping:
+    patience: 10
+
+

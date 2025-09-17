@@ -1,0 +1,20 @@
+data:
+  batch_size: 64
+  num_workers: 4
+  split_seed: 42
+  target_signal_length: 1250
+
+model:
+  name: "papagei_s_linear_probe"
+  pretrained_model_path: "weights/papagei_s.pt" 
+  
+  # PaPaGei-S (ResNet1DMoE) parameters
+  in_channels: 1             # PPG is single-channel
+  base_filters: 32
+  kernel_size: 3
+  stride: 2
+  groups: 1
+  n_block: 18
+  n_classes: 512             # <<< This is the embedding dimension
+  n_experts: 3
+

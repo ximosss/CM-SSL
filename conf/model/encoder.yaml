@@ -1,0 +1,2 @@
+name: encoder
+pretrained_model_path: "/home/ubuntu/workspace/JTwBio/checkpoints/jtwbio_encoder_mimic_weight/epoch=1021-step=1964284-valid_total_loss=0.0000.ckpt"

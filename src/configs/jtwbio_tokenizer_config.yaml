@@ -1,0 +1,75 @@
+seed_everything: 42
+
+trainer:
+  max_epochs: 1024
+  accelerator: gpu
+  devices: 4 
+  precision: 16-mixed
+  gradient_clip_val: 1.0
+  gradient_clip_algorithm: norm
+  logger:
+    class_path: lightning.pytorch.loggers.TensorBoardLogger
+    init_args:
+      save_dir: logs/
+      name: tokenizer_full_uni_ppg
+  callbacks:
+    - class_path: lightning.pytorch.callbacks.ModelCheckpoint
+      init_args:
+        dirpath: checkpoints/tokenizer_full_uni_ppg
+        filename: "{epoch}-{step}-{valid_total_loss:.4f}" 
+        monitor: valid_total_loss
+        mode: min
+        save_top_k: 1
+        save_last: True 
+        verbose: True
+    - class_path: lightning.pytorch.callbacks.LearningRateMonitor
+      init_args:
+        logging_interval: step 
+    - class_path: lightning.pytorch.callbacks.EarlyStopping
+      init_args:
+        monitor: valid_total_loss
+        patience: 15 
+        mode: min
+        verbose: True
+
+model:
+  D_embed: 128
+  num_patches: 10
+  patch_size: 125 
+  max_seq_length: 1250
+  num_encoder_transformer_heads: 8
+  num_decoder_transformer_heads: 4
+  num_transformer_encoder_layers: 10
+  num_transformer_decoder_layers: 2
+  quantizer_num_embeddings: 8192   #token vocabulary size
+  quantizer_embedding_dim: 128
+  quantizer_commitment_beta: 0.25  # depending on more quant_loss or recon loss
+  quantizer_kmeans_init: True
+  quantizer_codebook_init_path: ''
+  used_channel: [1] # 0 --> ECG, 1--> PPG
+  ecg_weight: 0.0
+  ppg_weight: 1.0
+  learning_rate: 1e-3
+  weight_decay: 1e-5
+  lr_scheduler_type: cosine  # 1)consine, 2)step_lr, 3)reduce_on_plateau
+  warmup_epochs: 10
+  min_lr: 1e-5
+  total_epochs: 1024
+  step_size: 10
+  gamma: 0.1
+
+data:                          
+  train_npy_file: 
+  val_npy_file: null 
+  test_npy_file: null
+  batch_size: 512
+  num_workers: 8
+  pin_memory: True
+  model_input_num_patches_Nt: 10  # N_t
+  model_input_patch_size_t: 125   # t_patch
+  stride_for_sequences_raw: 1250
+  val_split_ratio: 0.1
+  test_split_ratio: 0.1
+  split_from_train_ratios: [0.9, 0.05, 0.05]
+  seed: 42 
+

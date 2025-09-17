@@ -1,0 +1,15 @@
+
+name: "bidmc_rr" 
+type: "regression" 
+num_outputs: 1
+
+data_paths:
+  train_features: ./bidmc_rr/train_features.npy
+  train_labels: ./bidmc_rr/train_labels.npy
+  val_features: ./bidmc_rr/val_features.npy
+  val_labels: ./bidmc_rr/val_labels.npy
+  test_features: ./bidmc_rr/test_features.npy
+  test_labels: ./bidmc_rr/test_labels.npy
+
+
+prediction_output_path: "test_predictions.npz"

@@ -1,0 +1,16 @@
+
+name: "ppg_dalia_rr" 
+type: "regression" 
+num_outputs: 1
+
+data_paths:
+  train_features: ./ppg_dalia_rr/train_features.npy
+  train_labels: ./ppg_dalia_rr/train_labels.npy
+  val_features: ./ppg_dalia_rr/val_features.npy
+  val_labels: ./ppg_dalia_rr/val_labels.npy
+  test_features: ./ppg_dalia_rr/test_features.npy
+  test_labels: ./ppg_dalia_rr/test_labels.npy
+
+
+
+prediction_output_path: "test_predictions.npz"

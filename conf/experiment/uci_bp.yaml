@@ -1,0 +1,15 @@
+
+name: "uci_bp" 
+type: "regression" 
+num_outputs: 2
+
+data_paths:
+  train_features: ./uci_bp/train_features.npy
+  train_labels: ./uci_bp/train_labels.npy
+  val_features: ./uci_bp/val_features.npy
+  val_labels: ./uci_bp/val_labels.npy
+  test_features: ./uci_bp/test_features.npy
+  test_labels: ./uci_bp/test_labels.npy
+
+
+prediction_output_path: "test_predictions.npz"

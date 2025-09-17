@@ -1,0 +1,42 @@
+task:
+  name: "test" 
+  type: "regression" # "classification" or "regression
+  model_name: tfc
+  # classification
+  num_classes: 2
+  # regression
+  num_outputs: 1
+
+data:
+  features_path: 
+  labels_path: 
+  target_signal_length: 1250
+  split_ratios: [0.7, 0.15, 0.15] 
+  split_seed: 42
+  batch_size: 64
+  num_workers: 4
+
+model:
+  in_channels: 1
+  base_filters: 32
+  kernel_size: 3
+  stride: 2
+  groups: 1
+  n_block: 16
+  hidden_dim: 512
+  prediction_dim: 512
+  pretrained_model_path: 
+
+training:
+  # "linear_probing" or "full_finetuning"
+  prediction_output_path: 
+  finetune_mode: "linear_probing" 
+  epochs: 1024
+  optimizer:
+    lr: 1e-3
+    backbone_lr: 1e-5 
+    weight_decay: 1e-4
+  scheduler:
+    type: "cosine" # "cosine" 或 "none"
+  early_stopping:
+    patience: 10

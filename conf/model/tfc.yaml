@@ -1,0 +1,3 @@
+name: tfc
+pretrained_model_path: "/home/amax/workspace/JTwBio/best_models/TFC/tfc_pretraining_fulldata_3/best_model.pth"
+

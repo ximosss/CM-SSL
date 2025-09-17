@@ -1,0 +1,80 @@
+seed_everything: 42
+
+trainer:
+  max_epochs: 1024
+  accelerator: gpu
+  devices: 4
+  precision: 16-mixed
+  gradient_clip_val: 1.0
+  gradient_clip_algorithm: norm
+  strategy: ddp_find_unused_parameters_true
+  logger:
+    class_path: lightning.pytorch.loggers.TensorBoardLogger
+    init_args:
+      save_dir: logs/
+      name: encoder_full_weight_ppg_large
+  callbacks:
+    - class_path: lightning.pytorch.callbacks.ModelCheckpoint
+      init_args:
+        dirpath: checkpoints/encoder_full_weight_ppg_large
+        filename: "{epoch}-{step}-{valid_total_loss:.4f}" 
+        monitor: val_loss
+        mode: min
+        save_top_k: 1
+        save_last: True 
+        verbose: True
+    - class_path: lightning.pytorch.callbacks.LearningRateMonitor
+      init_args:
+        logging_interval: step 
+    - class_path: lightning.pytorch.callbacks.EarlyStopping
+      init_args:
+        monitor: val_loss
+        patience: 10
+        mode: min
+        verbose: True
+
+model:
+  E_in_dim: 125
+  E_embed: 1024 # 256 512 1024
+  E_nhead: 16
+  E_drop_rate: 0.3
+  E_num_layers: 12
+  D_embed: 128
+  num_patches: 10
+  patch_size: 125 
+  max_seq_length: 1250
+  num_transformer_heads: 8
+  num_transformer_encoder_layers: 10
+  quantizer_num_embeddings: 8192   #token vocabulary size (8192, 128)
+  quantizer_embedding_dim: 128
+  quantizer_commitment_beta: 0.25  # depending on more quant_loss or recon loss
+  quantizer_kmeans_init: False
+  quantizer_codebook_init_path: ''
+  tokenizer_path: 
+  learning_rate: 1e-4
+  stochastic_depth_prob: 0.0
+  tokenizer_used_channel: [0,1]
+  encoder_input_channel: 1 
+  # weight_decay: 1e-5
+  # lr_scheduler_type: cosine  # 1)consine, 2)step_lr, 3)reduce_on_plateau
+  # warmup_epochs: 10
+  # min_lr: 1e-6
+  # total_epochs: 512
+  # step_size: 10
+  # gamma: 0.1
+
+data:
+  train_npy_file: 
+  val_npy_file: null
+  test_npy_file: null
+  batch_size: 2048
+  num_workers: 4
+  pin_memory: True
+  model_input_num_patches_Nt: 10  # N_t
+  model_input_patch_size_t: 125   # t_patch
+  stride_for_sequences_raw: 1250
+  val_split_ratio: 0.1
+  test_split_ratio: 0.1
+  split_from_train_ratios: [0.9, 0.05, 0.05]
+  seed: 42 
+
