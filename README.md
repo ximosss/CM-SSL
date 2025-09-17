@@ -1,6 +1,2 @@
-"""
-Joint Tokenizing with Large Scale Synchronous Biosignals for 
-Learning Generic Cross-Modality Representation 
-
-Author: Shuangdu Li
-"""
+CROSS-MODALITY SELF-SUPERVISION FOR UNIMODAL PHYSIOLOGICAL SIGNALS
+REPRESENTATION LEARNING
