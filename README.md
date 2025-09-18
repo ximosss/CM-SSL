@@ -1,5 +1,17 @@
 ## CROSS-MODALITY SELF-SUPERVISION FOR UNIMODAL PHYSIOLOGICAL SIGNALS REPRESENTATION LEARNING
 
+### Getting Started 
+
+### Environment 
+```
+conda create -n cmssl python=3.11
+conda activate cmssl
+pip install -r requirements.txt
+cd cmssl
+
+```
+
+
 ### How to Use
 
 The workflow is divided into three main steps: pre-training the tokenizer, pre-training the encoder, and fine-tuning on downstream tasks.
@@ -11,3 +23,4 @@ Using the trained tokenizer from the previous step, pre-train the unimodal encod
 
 3. Fine-tune on a Downstream Task
 Fine-tune the pre-trained unimodal encoder on a specific downstream task, such as HR estimation or ECG classification. Note that the input data for this stage is unimodal.
+
