@@ -1,5 +1,5 @@
 ## CROSS-MODALITY SELF-SUPERVISION FOR UNIMODAL PHYSIOLOGICAL SIGNALS REPRESENTATION LEARNING
-![workflow](./model.png)
+![workflow](./poster.png)
 
 ## Getting Started 
 
